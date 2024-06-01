@@ -1,5 +1,5 @@
 # GithubUpdater
-## A script that allows you to update your software via github releases.
+## A simple Python script that allows you to update your own programs via github releases.
 
 ## How to use:
 1. Choose if your program will use a config.json (updater_w_config) or a file which contains the version inside (updater)

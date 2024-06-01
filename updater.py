@@ -27,7 +27,7 @@ def check_update():
         return False
 
 def update(version : str):
-    files = ["main.py", "example.txt", "another_example.txt", "requirements.txt"] # files inside your zip
+    files = ["main.py", "example.txt", "another_example.txt", "requirements.txt"] # files inside your zip, if folder, do .\\foldername\\file
     if check_update():
         print(f"Downloading new version {version}")
         toupd = requests.get(f"https://github.com/[YOURGITHUBUSERNAME]/[YOURREPONAME]/releases/download/{version}/latest_release.zip") # you can use program_{version} is your releases have version strings

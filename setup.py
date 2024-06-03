@@ -50,15 +50,7 @@ while True:
     if _break:
         break
 
-while True:
-    file_in_zip = input("Type the name of a file in your zip (if it is in a subfolder, use .\\folder\\filename.example, and do not include your requirements file).\nPress enter if you are done: ")
-    if file_in_zip == "":
-        break
-    confirm = input(f"Is {file_in_zip} correct? (y/n) ")
-    if confirm[0].lower() == "y":
-        files.append(file_in_zip)
-    for file in files:
-        print(file)
+print("Generating config...")
 
 with open("updater.json", "w") as u:
     upd = {}
@@ -68,10 +60,11 @@ with open("updater.json", "w") as u:
     upd["rel_file"] = release_file
     upd["req_f"] = requirements_file
     upd["req_f_n"] = requirements_file_name
-    upd["files"] = files
     json.dump(upd, u, indent=4)
 
 updaterdl = requests.get("https://raw.githubusercontent.com/bazthedev/GithubUpdater/main/updater.py")
 with open(".\\updater.py", "wb") as f:
     f.write(updaterdl.content)
     f.close()
+
+print("Done")

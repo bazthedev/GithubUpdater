@@ -31,7 +31,6 @@ def check_update():
         return False
 
 def update(version : str):
-    files = config["files"]
     if check_update():
         print(f"Downloading new version {version}")
         if "{version}" in config["rel_file"]:
@@ -42,11 +41,6 @@ def update(version : str):
         with open(f"{config["rel_file"]}", "wb") as p:
             p.write(toupd.content)
             p.close()
-        for file in files:
-            try:
-                os.remove(file)
-            except FileNotFoundError:
-                pass
         with zipfile.ZipFile(f"{config["rel_file"]}", "r") as newverzip:
             newverzip.extractall("./")
         config["version"] = version

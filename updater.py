@@ -25,7 +25,7 @@ def check_update():
     new_ver = requests.get(f"https://api.github.com/repos/{uname}/{repo}/releases/latest")
     new_ver_str = new_ver.json()["name"]
 
-    if cver < new_ver_str:
+    if cver < new_ver_str or cver != new_ver_str:
         return True
     else:
         return False

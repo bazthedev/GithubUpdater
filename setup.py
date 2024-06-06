@@ -4,7 +4,6 @@ import requests
 version = "0"
 username = ""
 reponame = ""
-release_file = ""
 requirements_file = False
 requirements_file_name = ""
 files = []
@@ -18,12 +17,6 @@ while True:
 while True:
     reponame = input("Repository name: ")
     confirm = input(f"Is {reponame} correct? (y/n) ")
-    if confirm[0].lower() == "y":
-        break
-
-while True:
-    release_file = input("What is your release file structure? If your file contains a version string, then use {version} in your answer, e.g. Release_{version}.zip, and the updater will substitute it in: ")
-    confirm = input(f"Is {release_file} correct? (y/n) ")
     if confirm[0].lower() == "y":
         break
 
@@ -57,7 +50,6 @@ with open("updater.json", "w") as u:
     upd["version"] = version
     upd["uname"] = username
     upd["repo"] = reponame
-    upd["rel_file"] = release_file
     upd["req_f"] = requirements_file
     upd["req_f_n"] = requirements_file_name
     json.dump(upd, u, indent=4)

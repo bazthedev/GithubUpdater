@@ -70,6 +70,7 @@ def update(version : str):
                     if config["req_f"] in os.listdir("."):
                         os.system(f"py -m pip install -r {config["req_f_n"]}")
                     os.remove(f"{dl["name"]}")
+            os.system(config["preinstall"])
     else:
         print(f"You are already running the latest version!\nVersion: {version}")
     
